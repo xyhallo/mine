@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扫雷(测试版)</title>
+    <style>
+        .box {
+            border: 1px solid #bbbbbb;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lattice {
+            width: 32px;
+            height: 32px;
+            box-sizing: border-box;
+            border: 1px solid #929292;
+            background-color: rgb(61, 88, 204);
+            float: left;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .qy-other .lattice {
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            font-size: 12px;
+        }
+
+
+        .lattice:hover {
+            background-color: rgb(106, 158, 226)
+        }
+
+        .middle {
+            background-color: rgb(191, 112, 228);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+
+    <fieldset class="login">
+        <legend>登录区域</legend>
+        <div>
+            账号:<input type="text" class="username" value="xyhallo">
+            密码:<input type="text" class="password" value="123456">
+            <button class="denglu">登录</button>
+        </div>
+    </fieldset>
+
+    <fieldset class="regist">
+        <legend>注册区域</legend>
+        <div>
+            账号:<input type="text" class="username">
+            密码:<input type="text" class="password">
+            用户名:<input type="text" class="nickname">
+            <button class="zhuce">注册</button>
+        </div>
+    </fieldset>
+
+    <fieldset class="mymsg" style="display:none;">
+        <legend>个人信息</legend>
+        <div class="mymsg11"> </div>
+        <div class="mymsg12"> </div>
+    </fieldset>
+
+    <fieldset class="room" style="display:none;">
+        <legend>选择房间</legend>
+        <div>
+            <select class="roomlist" multiple style="width: 400px;"></select>
+            房间密码:<input type="text" class="jrfjmm">
+            <button onclick="addRoom()">加入选中房间</button>
+            <button onclick="getRoom()">刷新房间</button>
+        </div>
+    </fieldset>
+
+    <fieldset class="creatroom" style="display:none;">
+        <legend>创建房间</legend>
+        <div>
+            房间名（可以为空）:<input type="text" class="fjm">
+            房间密码（可以为空）:<input type="text" class="fjmm">
+            最大人数:<input type="text" class="zdrs" value="8">
+            模式: <select class="ms">
+                <option value="1">初级</option>
+                <option value="2">中级</option>
+                <option value="3">高级</option>
+            </select>
+            <br>
+            对局时间(1-10分钟):<input type="text" class="djsj" value="5">
+            <button onclick="creatRoom()">创建房间</button>
+        </div>
+    </fieldset>
+
+    <fieldset class="nowRoom" style="display:none;">
+        <legend>当前房间</legend>
+        <div class="roomname">
+
+        </div>
+        <div>
+            房间玩家:
+            <select class="fjwj" multiple style="width: 200px;"></select>
+            <button onclick="zhunbei()">准备</button>
+            <button onclick="qxzhunbei()">取消准备</button>
+            <button onclick="startGame()">开始游戏</button>
+            <button onclick="tcRoom()">退出房间</button>
+        </div>
+    </fieldset>
+
+    <fieldset class="djxxbox" style="display:none;">
+        <legend>对局信息</legend>
+        <div class="djxx"></div>
+        <div class="djxxsysj"></div>
+    </fieldset>
+
+    <div class="gamearea" style="display:none;">
+
+    </div>
+
+    <script>
+        var debuggermode = true;
+        $(document).bind(" contextmenu", function (e) { return false; });
+    </script>
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
